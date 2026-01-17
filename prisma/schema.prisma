@@ -1,0 +1,159 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+// Company metadata
+model Company {
+  id        String   @id @default(cuid()) @map("_id")
+  name      String   @default("CryptoVault")
+  logo      String?
+  theme     String   @default("dark")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// User model
+model User {
+  id            String    @id @default(cuid()) @map("_id")
+  email         String    @unique
+  password      String
+  firstName     String?
+  lastName      String?
+  role          String    @default("user") // "user" or "admin"
+  isVerified    Boolean   @default(false)
+  
+  // Wallet balances
+  btcBalance    Float     @default(0)
+  ethBalance    Float     @default(0)
+  ltcBalance    Float     @default(0)
+  usdtBalance   Float     @default(0)
+  
+  // Statistics
+  totalDeposited  Float   @default(0)
+  totalWithdrawn  Float   @default(0)
+  totalProfits    Float   @default(0)
+  
+  // Relations
+  deposits      Deposit[]
+  withdrawals   Withdrawal[]
+  transactions  Transaction[]
+  investmentPlan InvestmentPlan?
+  passwordReset PasswordResetToken?
+  
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
+model PasswordResetToken {
+  id        String    @id @default(cuid()) @map("_id")
+  userId    String    @unique
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  token     String    @unique
+  expiresAt DateTime
+  
+  createdAt DateTime  @default(now())
+}
+
+// Deposit model
+model Deposit {
+  id            String    @id @default(cuid()) @map("_id")
+  userId        String
+  user          User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  amount        Float
+  currency      String    // "BTC", "ETH", "LTC", "USDT"
+  usdValue      Float
+  
+  status        String    @default("pending") // "pending", "approved", "rejected"
+  transactionHash String?
+  
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
+// Withdrawal model
+model Withdrawal {
+  id            String    @id @default(cuid()) @map("_id")
+  userId        String
+  user          User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  amount        Float
+  currency      String    // "BTC", "ETH", "LTC", "USDT"
+  usdValue      Float
+  
+  status        String    @default("pending") // "pending", "approved", "rejected", "completed"
+  walletAddress String
+  transactionHash String?
+  
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
+// Transaction model for activity tracking
+model Transaction {
+  id            String    @id @default(cuid()) @map("_id")
+  userId        String
+  user          User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  type          String    // "deposit", "withdrawal", "profit"
+  amount        Float
+  currency      String
+  description   String?
+  
+  createdAt     DateTime  @default(now())
+}
+
+// Investment Plan model
+model InvestmentPlan {
+  id            String    @id @default(cuid()) @map("_id")
+  userId        String    @unique
+  user          User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  planId        String    // "starter", "silver", "gold"
+  planName      String
+  returnPercentage Float
+  durationDays  Int
+  minAmount     Float
+  maxAmount     Float
+  
+  startDate     DateTime
+  endDate       DateTime
+  
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
+model Partner {
+  id        String    @id @default(cuid()) @map("_id")
+  name      String    @unique
+  logo      String
+  url       String?
+  isActive  Boolean   @default(true)
+  order     Int       @default(0) // For sorting in carousel
+  
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model AdminWallet {
+  id        String    @id @default(cuid()) @map("_id")
+  currency  String    @unique // "BTC", "ETH", "LTC", "USDT"
+  address   String
+  isEnabled Boolean   @default(true)
+  
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model CryptoRate {
+  id        String   @id @default(cuid()) @map("_id")
+  symbol    String   @unique // BTC, ETH, LTC, USDT
+  price     Float
+  
+  updatedAt DateTime @updatedAt
+}

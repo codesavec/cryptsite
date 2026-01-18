@@ -28,6 +28,11 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Invalid email or password" }, { status: 401 })
     }
 
+    // Check if account is active
+    if (!user.isActive) {
+      return NextResponse.json({ error: "Account has been deactivated. Please contact support." }, { status: 403 })
+    }
+
     // Return user data (in real app, set secure session cookie)
     return NextResponse.json({
       user: {

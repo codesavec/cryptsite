@@ -88,8 +88,8 @@ export function PartnersCarousel() {
       <style jsx global>{`
         .partners-swiper .swiper-button-next,
         .partners-swiper .swiper-button-prev {
-          color: #c9a961;
-          background: rgba(201, 169, 97, 0.1);
+          color: #b29758;
+          background: rgba(178, 151, 88, 0.1);
           width: 40px;
           height: 40px;
           border-radius: 50%;
@@ -104,12 +104,12 @@ export function PartnersCarousel() {
         }
 
         .partners-swiper .swiper-pagination-bullet {
-          background: #c9a961;
+          background: #b29758;
           opacity: 0.4;
         }
 
         .partners-swiper .swiper-pagination-bullet-active {
-          background: #c9a961;
+          background: #b29758;
           opacity: 1;
         }
       `}</style>

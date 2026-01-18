@@ -27,7 +27,7 @@ export function WalletCard({ symbol, name, balance, usdValue, icon, color }: Wal
         </div>
       </div>
       <div className="space-y-1">
-        <p className="text-sm md:text-2xl font-bold text-accent truncate">
+        <p className="text-sm md:text-2xl font-bold text-accent-thick truncate">
           {balance.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: symbol === "USDT" ? 2 : 6 })}
         </p>
         <p className="text-[10px] md:text-sm text-muted-foreground">

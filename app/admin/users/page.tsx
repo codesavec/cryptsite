@@ -81,6 +81,28 @@ export default function AdminUsersPage() {
     }
   }
 
+  const toggleUserStatus = async (userId: string, currentStatus: boolean) => {
+    try {
+      const response = await fetch("/api/admin/users/status", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-user-id": user.id,
+        },
+        body: JSON.stringify({
+          userId,
+          isActive: !currentStatus,
+        }),
+      })
+
+      if (response.ok) {
+        fetchUsers(user.id)
+      }
+    } catch (error) {
+      console.error("Error toggling user status:", error)
+    }
+  }
+
   return (
     <div className="flex flex-col md:flex-row min-h-screen bg-background">
       <SidebarNav isAdmin className="hidden md:block" />
@@ -117,6 +139,7 @@ export default function AdminUsersPage() {
                           <th className="text-left py-3 px-4 text-muted-foreground font-medium hidden lg:table-cell">ETH</th>
                           <th className="text-left py-3 px-4 text-muted-foreground font-medium hidden lg:table-cell">USDT</th>
                           <th className="text-left py-3 px-4 text-muted-foreground font-medium">Total Dep.</th>
+                          <th className="text-left py-3 px-4 text-muted-foreground font-medium">Status</th>
                           <th className="text-left py-3 px-4 text-muted-foreground font-medium">Action</th>
                         </tr>
                       </thead>
@@ -132,16 +155,31 @@ export default function AdminUsersPage() {
                             <td className="py-3 px-4 text-muted-foreground hidden lg:table-cell">{u.usdtBalance.toFixed(2)}</td>
                             <td className="py-3 px-4 text-accent font-bold">${u.totalDeposited.toFixed(2)}</td>
                             <td className="py-3 px-4">
-                              <Button
-                                onClick={() => {
-                                  setSelectedUser(u)
-                                  setUpdateModal(true)
-                                }}
-                                size="sm"
-                                className="h-7 px-3 text-[10px] bg-accent hover:bg-accent/90 text-accent-foreground"
-                              >
-                                Edit
-                              </Button>
+                              <span className={`px-2 py-1 rounded-full text-[8px] font-bold uppercase tracking-wider ${u.isActive ? "bg-green-500/20 text-green-500" : "bg-red-500/20 text-red-500"}`}>
+                                {u.isActive ? "Active" : "Inactive"}
+                              </span>
+                            </td>
+                            <td className="py-3 px-4">
+                              <div className="flex gap-2">
+                                <Button
+                                  onClick={() => {
+                                    setSelectedUser(u)
+                                    setUpdateModal(true)
+                                  }}
+                                  size="sm"
+                                  className="h-7 px-3 text-[10px] bg-accent hover:bg-accent/90 text-accent-foreground"
+                                >
+                                  Edit
+                                </Button>
+                                <Button
+                                  onClick={() => toggleUserStatus(u.id, u.isActive)}
+                                  size="sm"
+                                  variant="outline"
+                                  className={`h-7 px-3 text-[10px] border-border ${u.isActive ? "hover:bg-red-500/10 text-red-500" : "hover:bg-green-500/10 text-green-500"}`}
+                                >
+                                  {u.isActive ? "Deactivate" : "Activate"}
+                                </Button>
+                              </div>
                             </td>
                           </tr>
                         ))}

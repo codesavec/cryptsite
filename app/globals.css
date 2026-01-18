@@ -5,75 +5,79 @@
 
 :root {
   /* CryptoVault Color System - Dark Theme */
-  --background: oklch(0.08 0 0); /* Very dark navy/black */
+  --background: #000000; /* Pure black */
   --foreground: oklch(0.95 0 0); /* Off-white */
-  --card: oklch(0.12 0 0); /* Dark card background */
+  --card: #050505; /* Almost black for cards */
   --card-foreground: oklch(0.95 0 0);
-  --popover: oklch(0.12 0 0);
+  --popover: #050505;
   --popover-foreground: oklch(0.95 0 0);
-  --primary: oklch(0.08 0 0); /* Dark primary */
+  --primary: #000000; /* Black primary */
   --primary-foreground: oklch(0.95 0 0);
-  --secondary: oklch(0.15 0 0); /* Slightly lighter dark */
+  --secondary: #080808; /* Very dark grey for secondary */
   --secondary-foreground: oklch(0.95 0 0);
-  /* Gold accent for CryptoVault branding */
-  --accent: oklch(0.72 0.15 70); /* Rich gold color */
-  --accent-foreground: oklch(0.12 0 0);
-  --muted: oklch(0.25 0 0); /* Muted dark */
+  /* Gold/Brown accent for CryptoVault branding - Hybrid System */
+  --accent-light: #b29758; /* Muted gold for UI elements like sidebars */
+  --accent-thick: #d9a326; /* Rich gold for emphasis like prices */
+  --accent: var(--accent-light);
+  --accent-foreground: #000000;
+  --muted: #111111; /* Muted dark */
   --muted-foreground: oklch(0.65 0 0);
   --destructive: oklch(0.577 0.245 27.325); /* Red for errors */
   --destructive-foreground: oklch(0.95 0 0);
-  --border: oklch(0.2 0 0); /* Dark border */
-  --input: oklch(0.15 0 0); /* Input background */
-  --ring: oklch(0.72 0.15 70); /* Gold ring */
-  --chart-1: oklch(0.72 0.15 70); /* Gold */
+  --border: #1a1a1a; /* Very dark border */
+  --input: #080808; /* Input background */
+  --ring: var(--accent-thick);
+  --chart-1: var(--accent-thick);
   --chart-2: oklch(0.6 0.15 250); /* Blue */
   --chart-3: oklch(0.5 0.1 120); /* Green */
   --chart-4: oklch(0.65 0.12 40); /* Orange */
   --chart-5: oklch(0.55 0.15 200); /* Purple */
   --radius: 0.625rem;
-  --sidebar: oklch(0.12 0 0);
+  --sidebar: #030303;
   --sidebar-foreground: oklch(0.95 0 0);
-  --sidebar-primary: oklch(0.08 0 0);
+  --sidebar-primary: #000000;
   --sidebar-primary-foreground: oklch(0.95 0 0);
-  --sidebar-accent: oklch(0.72 0.15 70);
-  --sidebar-accent-foreground: oklch(0.12 0 0);
-  --sidebar-border: oklch(0.2 0 0);
-  --sidebar-ring: oklch(0.72 0.15 70);
+  --sidebar-accent: var(--accent-light);
+  --sidebar-accent-foreground: #000000;
+  --sidebar-border: #111111;
+  --sidebar-ring: var(--accent-light);
 }
 
 .dark {
-  --background: oklch(0.08 0 0);
+  --background: #000000;
   --foreground: oklch(0.95 0 0);
-  --card: oklch(0.12 0 0);
+  --card: #050505;
   --card-foreground: oklch(0.95 0 0);
-  --popover: oklch(0.12 0 0);
+  --popover: #050505;
   --popover-foreground: oklch(0.95 0 0);
-  --primary: oklch(0.08 0 0);
+  --primary: #000000;
   --primary-foreground: oklch(0.95 0 0);
-  --secondary: oklch(0.15 0 0);
+  --secondary: #080808;
   --secondary-foreground: oklch(0.95 0 0);
-  --accent: oklch(0.72 0.15 70);
-  --accent-foreground: oklch(0.12 0 0);
-  --muted: oklch(0.25 0 0);
+  --accent-light: #b29758;
+  --accent-thick: #d9a326;
+  --accent: var(--accent-light);
+  --accent-foreground: #000000;
+  --muted: #111111;
   --muted-foreground: oklch(0.65 0 0);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.95 0 0);
-  --border: oklch(0.2 0 0);
-  --input: oklch(0.15 0 0);
-  --ring: oklch(0.72 0.15 70);
-  --chart-1: oklch(0.72 0.15 70);
+  --border: #1a1a1a;
+  --input: #080808;
+  --ring: var(--accent-thick);
+  --chart-1: var(--accent-thick);
   --chart-2: oklch(0.6 0.15 250);
   --chart-3: oklch(0.5 0.1 120);
   --chart-4: oklch(0.65 0.12 40);
   --chart-5: oklch(0.55 0.15 200);
-  --sidebar: oklch(0.12 0 0);
+  --sidebar: #030303;
   --sidebar-foreground: oklch(0.95 0 0);
-  --sidebar-primary: oklch(0.08 0 0);
+  --sidebar-primary: #000000;
   --sidebar-primary-foreground: oklch(0.95 0 0);
-  --sidebar-accent: oklch(0.72 0.15 70);
-  --sidebar-accent-foreground: oklch(0.12 0 0);
-  --sidebar-border: oklch(0.2 0 0);
-  --sidebar-ring: oklch(0.72 0.15 70);
+  --sidebar-accent: var(--accent-light);
+  --sidebar-accent-foreground: #000000;
+  --sidebar-border: #111111;
+  --sidebar-ring: var(--accent-light);
 }
 
 @theme inline {
@@ -92,6 +96,8 @@
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
   --color-accent: var(--accent);
+  --color-accent-light: var(--accent-light);
+  --color-accent-thick: var(--accent-thick);
   --color-accent-foreground: var(--accent-foreground);
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);

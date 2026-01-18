@@ -25,7 +25,7 @@ export function WalletOverview({ walletData, cryptoPrices }: WalletOverviewProps
       {/* Total Balance */}
       <div className="bg-gradient-to-br from-accent/20 to-accent/5 border border-accent/20 rounded-xl p-6 md:p-10 shadow-lg shadow-accent/5">
         <p className="text-muted-foreground text-[10px] md:text-sm font-bold uppercase tracking-widest mb-2">Portfolio Value</p>
-        <p className="text-3xl md:text-5xl font-extrabold text-accent">
+        <p className="text-3xl md:text-5xl font-extrabold text-accent-thick">
           ${totalUsdValue.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
         </p>
       </div>

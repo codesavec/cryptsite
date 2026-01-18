@@ -26,6 +26,7 @@ model User {
   lastName      String?
   role          String    @default("user") // "user" or "admin"
   isVerified    Boolean   @default(false)
+  isActive      Boolean   @default(true)
   
   // Wallet balances
   btcBalance    Float     @default(0)

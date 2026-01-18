@@ -80,7 +80,7 @@ export function CryptoConverter({ prices: propPrices }: CryptoConverterProps) {
         {/* Exchange Rate */}
         <div className="bg-secondary border border-border p-3 rounded text-center">
           <p className="text-sm text-muted-foreground mb-1">Exchange Rate</p>
-          <p className="font-bold text-accent">
+          <p className="font-bold text-accent-thick">
             1 {fromCrypto} = {(fromPrice / toPrice).toFixed(8)} {toCrypto}
           </p>
         </div>

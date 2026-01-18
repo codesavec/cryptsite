@@ -142,7 +142,7 @@ export default function HomePage() {
               style={{ animationDelay: "1s" }}
             ></div>
             <div
-              className="absolute bottom-[10%] right-[20%] w-32 h-32 md:w-64 md:h-64 bg-gradient-to-br from-yellow-400/20 to-yellow-500/20 rounded-full blur-3xl animate-pulse"
+              className="absolute bottom-[10%] right-[20%] w-32 h-32 md:w-64 md:h-64 bg-gradient-to-br from-accent/20 to-accent/20 rounded-full blur-3xl animate-pulse"
               style={{ animationDelay: "2s" }}
             ></div>
           </div>

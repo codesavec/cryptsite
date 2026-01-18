@@ -28,6 +28,7 @@ export async function GET(request: NextRequest) {
         totalDeposited: true,
         totalWithdrawn: true,
         totalProfits: true,
+        isActive: true,
         createdAt: true,
       },
     })

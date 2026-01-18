@@ -12,7 +12,7 @@ export function ActivityBadge({ type, amount, currency }: ActivityBadgeProps) {
       case "deposit":
         return "bg-green-500/20 text-green-500 border-green-500/50"
       case "withdrawal":
-        return "bg-amber-500/20 text-amber-500 border-amber-500/50"
+        return "bg-accent/20 text-accent border-accent/50"
       case "profit":
         return "bg-accent/20 text-accent border-accent/50"
       default:

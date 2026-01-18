@@ -106,7 +106,7 @@ export default function DashboardPage() {
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                     <div className="p-4 bg-secondary rounded-lg">
                       <p className="text-[10px] md:text-xs text-muted-foreground mb-1">TOTAL BALANCE</p>
-                      <p className="text-lg md:text-2xl font-bold text-accent">${totalBalance.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+                      <p className="text-lg md:text-2xl font-bold text-accent-thick">${totalBalance.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
                     </div>
                     <div className="p-4 bg-secondary rounded-lg">
                       <p className="text-[10px] md:text-xs text-muted-foreground mb-1">Deposited</p>
@@ -130,7 +130,7 @@ export default function DashboardPage() {
                 <CardContent className="space-y-3 flex-1 flex flex-col justify-center">
                   <Button
                     onClick={() => router.push("/dashboard/deposit")}
-                    className="w-full bg-accent hover:bg-accent/90 text-accent-foreground font-semibold py-2 h-auto"
+                    className="w-full bg-accent-thick hover:bg-accent-thick/90 text-accent-foreground font-semibold py-2 h-auto"
                   >
                     💰 Make Deposit
                   </Button>
@@ -188,7 +188,7 @@ export default function DashboardPage() {
                             <td className="py-3 px-2 sm:px-4 text-right text-foreground">
                               {balance.toFixed(crypto.symbol === "USDT" ? 2 : 6)}
                             </td>
-                            <td className="py-3 px-2 sm:px-4 text-right text-accent font-semibold">
+                            <td className="py-3 px-2 sm:px-4 text-right text-accent-thick font-semibold">
                               ${value.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                             </td>
                             <td className="py-3 px-2 sm:px-4 text-right text-muted-foreground hidden sm:table-cell">
@@ -252,12 +252,12 @@ export default function DashboardPage() {
                     </div>
                     <div className="p-4 bg-secondary/50 rounded-lg">
                       <p className="text-[10px] text-muted-foreground mb-1 uppercase">Active Deposits</p>
-                      <p className="text-base sm:text-xl font-bold text-accent">${walletData.totalDeposited.toFixed(2)}</p>
+                      <p className="text-base sm:text-xl font-bold text-accent-thick">${walletData.totalDeposited.toFixed(2)}</p>
                     </div>
                   </div>
                   <Button
                     onClick={() => router.push("/dashboard/plans")}
-                    className="w-full bg-accent hover:bg-accent/90 py-2 h-auto"
+                    className="w-full bg-accent-thick hover:bg-accent-thick/90 py-2 h-auto"
                   >
                     View Investment Plans
                   </Button>

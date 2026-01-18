@@ -21,7 +21,7 @@ export function InvestmentPlans() {
           >
             <CardHeader className="space-y-4">
               <div className="flex items-center justify-between">
-                <CardTitle className="text-accent">{plan.name}</CardTitle>
+                <CardTitle className="text-accent-thick">{plan.name}</CardTitle>
                 <div className="text-3xl">💰</div>
               </div>
               <CardDescription>
@@ -59,7 +59,7 @@ export function InvestmentPlans() {
                 </div>
               </div>
 
-              <Button className="w-full bg-accent hover:bg-accent/90 text-accent-foreground">Choose Plan</Button>
+              <Button className="w-full bg-accent-thick hover:bg-accent-thick/90 text-accent-foreground">Choose Plan</Button>
             </CardContent>
           </Card>
         ))}
